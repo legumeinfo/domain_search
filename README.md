@@ -1,2 +1,2 @@
-# domain_search
-Protein domain search
+# tripal_domain
+Protein domain search 

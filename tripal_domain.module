@@ -1,0 +1,175 @@
+<?php
+
+/**
+ * @file
+ * module  with Drupal Nodes & Views
+ */
+
+/**
+ * @defgroup tripal_domain Domain Module
+ * @ingroup tripal_modules
+ * @{
+ * Integrates the Chado Domain module with Drupal Nodes
+ * @}
+ */
+require_once 'theme/tripal_domain.theme.inc';
+require_once 'includes/tripal_domain.chado_node.inc';
+require_once 'includes/tripal_domain.admin.inc';
+/**
+ * Implements hook_permission().
+ *
+ * Set the permission types that the chado module uses.  Essentially we
+ * want permissionis that protect creation, editing and deleting of chado
+ * data objects
+ *
+ * @ingroup tripal_phylotree
+ */
+function tripal_domain_permission() {
+  return array(
+
+   'access chado_domain content' => array(
+      'title' => t('View DOMAIN'),
+      'description' => t('Allow users to view domain pages.'),
+    ), 
+
+    'administer tripal domain' => array(
+      'title' => t('Administer DOMAIN'),
+      'description' => t('Allow users to administer all domains.'),
+    ),
+  );
+}
+
+/**   Hooks allow modules to interact with the Drupal core.
+ * Implements hook_menu().
+ *
+ * Menu items are automatically added for the new node types created
+ * by this module to the 'Create Content' Navigation menu item.  This function
+ * adds more menu items needed for this module.
+ *
+ * @ingroup tripal_domain
+ */
+function tripal_domain_menu() {
+  $items = array();
+
+  // administration landing page. currently has no content but is
+  // apparently required for the Sync and Help links to work.
+  $items['admin/tripal/extension/tripal_domain'] = array(
+    'title' => 'Domains', #that point to path Home » Administration » Tripal » ChadoDomains
+    'description' => 'Protein Domains and their count per species',
+    'page callback' => 'tripal_domain_admin_domains_listing',
+    'access arguments' => array('administer tripal domain'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  // help menu # HELP tab 
+  $items['admin/tripal/extension/tripal_domain/help'] = array(
+    'title' => 'Help',
+    'description' => 'Basic Description of Tripal Domain Module Functionality',
+    'page callback' => 'theme',
+    'page arguments' => array('domain_help'),
+    'access arguments' => array('administer tripal domain'),
+    'type' => MENU_LOCAL_TASK,
+  );
+  // configuration menu item # SETTINGS tab
+  $items['admin/tripal/extension/tripal_domain/configuration'] = array(
+    'title' => 'Settings',
+    'description' => 'Configure the Tripal Domain module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tripal_domain_admin'),
+    'access arguments' => array('administer tripal domain'),
+    'type' => MENU_LOCAL_TASK,
+ );
+
+
+/* peu adding menu under 'Search' tab */
+/*
+$items['search/protein_domains'] = array(
+    'title' => 'Domains',
+    'description' => 'Provides protein domains search tool',
+    'page arguments' => array('search/protein_domains'),
+    'access arguments' => array('access chado_domain content','create chado_domain content','delete chado_domain content','edit chado_domain content','administer tripal domain'),
+    );
+*/
+  
+   return $items;
+}
+
+/**
+ * Implements hook_views_api().
+ *
+ * Essentially this hook tells drupal that there is views support for
+ *  for this module which then includes tripal_db.views.inc where all the
+ *  views integration code is
+ *
+ * @ingroup tripal_domain
+ */
+function tripal_domain_views_api() {
+    $path = drupal_get_path('module', 'tripal_domain');
+    return array(
+        'api' => 3.0,
+        'path' => $path . '/views',    #this is a path in directory structure where files reside
+        'template path' => $path .'/themes'
+
+	);
+
+}
+
+/**
+ * Implements hook_search_biological_data_views().
+ * Adds the described views to the "Search Data" Page created by Tripal Views
+ *
+ * @ingroup tripal_domain
+ */
+
+function tripal_domain_search_biological_data_views() {
+  return array(
+      'tripal_domain_user_domain' => array(
+          'machine_name' => 'tripal_domain_user_domain',
+          'human_name' => 'Domains',
+          'description' => 'Protein domains, count of domain-to-gene per species, links to gene page etc.',
+          'link' => 'search/protein_domains'
+    ),
+  );
+}
+
+/**
+ *  Implements hook_theme().
+ *
+ * We need to let drupal know about our theme functions and their arguments.
+ *  We create theme functions to allow users of the module to customize the
+ *  look and feel of the output generated in this module
+ *
+ * @ingroup tripal_phylotree
+ */
+
+function tripal_domain_theme(){
+$items = array();
+  $path = drupal_get_path('module', 'tripal_domain');
+
+ // Module Help
+  $items['domain_help'] = array(
+    'template' => 'domain_help',
+    'path' => "$path/theme",
+  );
+ return $items;
+}
+
+/**
+ * Implements hook_help().
+ * Adds a help page to the module list
+ *
+ * @ingroup tripal_phylotree
+ */
+function tripal_domain_help ($path, $arg) {
+  if ($path == 'admin/help#tripal_domain') {
+    return theme('domain_help');
+  }
+}
+
+function tripal_domain_text_deliver($page_callback_result) {
+	print $page_callback_result;
+	drupal_exit();
+}
+
+// hack to suppress the 'Submitted by...' info drupal adds to nodes
+$variables['display_submitted'] = FALSE;
