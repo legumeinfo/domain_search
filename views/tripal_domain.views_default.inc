@@ -172,7 +172,7 @@ $handler->display->display_options['fields']['feature_name']['id'] = 'feature_na
 $handler->display->display_options['fields']['feature_name']['table'] = 'domain';
 $handler->display->display_options['fields']['feature_name']['field'] = 'feature_name';
 $handler->display->display_options['fields']['feature_name']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['feature_name']['alter']['path'] = 'feature/null/null/polypeptide_domain/[feature_name]';
+$handler->display->display_options['fields']['feature_name']['alter']['path'] = 'feature/consensus/consensus/polypeptide_domain/[feature_name]';
 $handler->display->display_options['fields']['feature_name']['alter']['absolute'] = TRUE;
 /* Field: domain: Glyma Count */
 $handler->display->display_options['fields']['glyma_count']['id'] = 'glyma_count';
