@@ -132,6 +132,45 @@ function tripal_domain_search_biological_data_views() {
   );
 }
 
+
+/**
+  *@A block at the top with user help info
+  */
+
+/**
+  * Implement hook_block_info().
+  * Define a block to appear at the top of the module(tripal_protein_domains) view/page.
+  */
+function tripal_domain_block_info() {
+$blocks['tripal_domain_userinfo_block'] = array(  //the block-id (prefix with module name to avoid namespace conflict)
+'info' => t('User info block at top of tripal_domain view.'),
+'status' => TRUE,
+ 'region' => 'highlighted',
+'weight' => 0,
+'visibility' => BLOCK_VISIBILITY_LISTED, // appears only in listed paths
+'pages' => "search/protein_domains", // block appears only in this path
+   );
+   return $blocks;
+}    //end: _block_info
+
+/**
+  * Implements hook_block_view().
+  *   The block content 
+  */
+function tripal_domain_block_view($delta='') {
+   $block = array();
+   switch ($delta) {
+     case 'tripal_domain_userinfo_block':  //if this is the block-ID
+       //a heading
+       $block['subject'] = t('<span align="center" style="font-size:100%">Protein Domains Search:</span>');
+       // block text from f()
+       $block['content'] = theblock_contents();
+       break;
+   }
+   return $block;
+}    //end: _block_view
+
+
 /**
  *  Implements hook_theme().
  *
