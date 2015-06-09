@@ -68,11 +68,6 @@ $handler->display->display_options['style_options']['columns'] = array(
   'IPRterm' => 'IPRterm',
   'feature_desc' => 'feature_desc',
   'total_count' => 'total_count',
-  'medtr_count' => 'medtr_count',
-  'cicar_count' => 'cicar_count',
-  'glyma_count' => 'glyma_count',
-  'phavu_count' => 'phavu_count',
-  'cajca_count' => 'cajca_count',
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
 );
@@ -107,41 +102,6 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'total_count' => array(
-    'sortable' => 1,
-    'default_sort_order' => 'asc',
-    'align' => '',
-    'separator' => '',
-    'empty_column' => 0,
-  ),
-  'medtr_count' => array(
-    'sortable' => 1,
-    'default_sort_order' => 'asc',
-    'align' => '',
-    'separator' => '',
-    'empty_column' => 0,
-  ),
-  'cicar_count' => array(
-    'sortable' => 1,
-    'default_sort_order' => 'asc',
-    'align' => '',
-    'separator' => '',
-    'empty_column' => 0,
-  ),
-  'glyma_count' => array(
-    'sortable' => 1,
-    'default_sort_order' => 'asc',
-    'align' => '',
-    'separator' => '',
-    'empty_column' => 0,
-  ),
-  'phavu_count' => array(
-    'sortable' => 1,
-    'default_sort_order' => 'asc',
-    'align' => '',
-    'separator' => '',
-    'empty_column' => 0,
-  ),
-  'cajca_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -206,52 +166,12 @@ $handler->display->display_options['fields']['total_count']['alter']['make_link'
 $handler->display->display_options['fields']['total_count']['alter']['path'] = 'search/gene?domains=[feature_name]';
 $handler->display->display_options['fields']['total_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['total_count']['separator'] = '';
-/* Field: domain: Medtr Count */
-$handler->display->display_options['fields']['medtr_count']['id'] = 'medtr_count';
-$handler->display->display_options['fields']['medtr_count']['table'] = 'domain';
-$handler->display->display_options['fields']['medtr_count']['field'] = 'medtr_count';
-$handler->display->display_options['fields']['medtr_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['medtr_count']['alter']['path'] = 'search/gene?abbreviation=Med. truncatula&domains=[feature_name]';
-$handler->display->display_options['fields']['medtr_count']['alter']['absolute'] = TRUE;
-$handler->display->display_options['fields']['medtr_count']['separator'] = '';
-/* Field: domain: Cicar Count */
-$handler->display->display_options['fields']['cicar_count']['id'] = 'cicar_count';
-$handler->display->display_options['fields']['cicar_count']['table'] = 'domain';
-$handler->display->display_options['fields']['cicar_count']['field'] = 'cicar_count';
-$handler->display->display_options['fields']['cicar_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['cicar_count']['alter']['path'] = 'search/gene?abbreviation=Cic. arietinum&domains=[feature_name]';
-$handler->display->display_options['fields']['cicar_count']['alter']['absolute'] = TRUE;
-$handler->display->display_options['fields']['cicar_count']['separator'] = '';
-/* Field: domain: Glyma Count */
-$handler->display->display_options['fields']['glyma_count']['id'] = 'glyma_count';
-$handler->display->display_options['fields']['glyma_count']['table'] = 'domain';
-$handler->display->display_options['fields']['glyma_count']['field'] = 'glyma_count';
-$handler->display->display_options['fields']['glyma_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['glyma_count']['alter']['path'] = 'search/gene?abbreviation=Gly. max&domains=[feature_name]';
-$handler->display->display_options['fields']['glyma_count']['alter']['absolute'] = TRUE;
-$handler->display->display_options['fields']['glyma_count']['separator'] = '';
-/* Field: domain: Phavu Count */
-$handler->display->display_options['fields']['phavu_count']['id'] = 'phavu_count';
-$handler->display->display_options['fields']['phavu_count']['table'] = 'domain';
-$handler->display->display_options['fields']['phavu_count']['field'] = 'phavu_count';
-$handler->display->display_options['fields']['phavu_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['phavu_count']['alter']['path'] = 'search/gene?abbreviation=Pha. vulgaris&domains=[feature_name]';
-$handler->display->display_options['fields']['phavu_count']['alter']['absolute'] = TRUE;
-$handler->display->display_options['fields']['phavu_count']['separator'] = '';
-/* Field: domain: Cajca Count */
-$handler->display->display_options['fields']['cajca_count']['id'] = 'cajca_count';
-$handler->display->display_options['fields']['cajca_count']['table'] = 'domain';
-$handler->display->display_options['fields']['cajca_count']['field'] = 'cajca_count';
-$handler->display->display_options['fields']['cajca_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['cajca_count']['alter']['path'] = 'search/gene?abbreviation=Caj. cajan&domains=[feature_name]';
-$handler->display->display_options['fields']['cajca_count']['alter']['absolute'] = TRUE;
-$handler->display->display_options['fields']['cajca_count']['separator'] = '';
 /* Field: domain: Aradu Count */
 $handler->display->display_options['fields']['aradu_count']['id'] = 'aradu_count';
 $handler->display->display_options['fields']['aradu_count']['table'] = 'domain';
 $handler->display->display_options['fields']['aradu_count']['field'] = 'aradu_count';
 $handler->display->display_options['fields']['aradu_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['aradu_count']['alter']['path'] = 'search/gene?abbreviation=Ara. duranensis&domains=[feature_name]';
+$handler->display->display_options['fields']['aradu_count']['alter']['path'] = 'search/gene?abbreviation=aradu&domains=[feature_name]';
 $handler->display->display_options['fields']['aradu_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['aradu_count']['separator'] = '';
 /* Field: domain: Araip Count */
@@ -259,7 +179,7 @@ $handler->display->display_options['fields']['araip_count']['id'] = 'araip_count
 $handler->display->display_options['fields']['araip_count']['table'] = 'domain';
 $handler->display->display_options['fields']['araip_count']['field'] = 'araip_count';
 $handler->display->display_options['fields']['araip_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=Ara. ipaensis&domains=[feature_name]';
+$handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=araip&domains=[feature_name]';
 $handler->display->display_options['fields']['araip_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['araip_count']['separator'] = '';
 /* Filter criterion: domain: Domain ID */
@@ -348,86 +268,6 @@ $handler->display->display_options['filters']['total_count']['expose']['use_oper
 $handler->display->display_options['filters']['total_count']['expose']['operator'] = 'total_count_op';
 $handler->display->display_options['filters']['total_count']['expose']['identifier'] = 'total_count';
 $handler->display->display_options['filters']['total_count']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  4 => 0,
-);
-/* Filter criterion: domain: Medtr Count */
-$handler->display->display_options['filters']['medtr_count']['id'] = 'medtr_count';
-$handler->display->display_options['filters']['medtr_count']['table'] = 'domain';
-$handler->display->display_options['filters']['medtr_count']['field'] = 'medtr_count';
-$handler->display->display_options['filters']['medtr_count']['group'] = 1;
-$handler->display->display_options['filters']['medtr_count']['exposed'] = TRUE;
-$handler->display->display_options['filters']['medtr_count']['expose']['operator_id'] = 'medtr_count_op';
-$handler->display->display_options['filters']['medtr_count']['expose']['label'] = 'Medtr Count';
-$handler->display->display_options['filters']['medtr_count']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['medtr_count']['expose']['operator'] = 'medtr_count_op';
-$handler->display->display_options['filters']['medtr_count']['expose']['identifier'] = 'medtr_count';
-$handler->display->display_options['filters']['medtr_count']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  4 => 0,
-);
-/* Filter criterion: domain: Cicar Count */
-$handler->display->display_options['filters']['cicar_count']['id'] = 'cicar_count';
-$handler->display->display_options['filters']['cicar_count']['table'] = 'domain';
-$handler->display->display_options['filters']['cicar_count']['field'] = 'cicar_count';
-$handler->display->display_options['filters']['cicar_count']['group'] = 1;
-$handler->display->display_options['filters']['cicar_count']['exposed'] = TRUE;
-$handler->display->display_options['filters']['cicar_count']['expose']['operator_id'] = 'cicar_count_op';
-$handler->display->display_options['filters']['cicar_count']['expose']['label'] = 'Cicar Count';
-$handler->display->display_options['filters']['cicar_count']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['cicar_count']['expose']['operator'] = 'cicar_count_op';
-$handler->display->display_options['filters']['cicar_count']['expose']['identifier'] = 'cicar_count';
-$handler->display->display_options['filters']['cicar_count']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  4 => 0,
-);
-/* Filter criterion: domain: Phavu Count */
-$handler->display->display_options['filters']['phavu_count']['id'] = 'phavu_count';
-$handler->display->display_options['filters']['phavu_count']['table'] = 'domain';
-$handler->display->display_options['filters']['phavu_count']['field'] = 'phavu_count';
-$handler->display->display_options['filters']['phavu_count']['group'] = 1;
-$handler->display->display_options['filters']['phavu_count']['exposed'] = TRUE;
-$handler->display->display_options['filters']['phavu_count']['expose']['operator_id'] = 'phavu_count_op';
-$handler->display->display_options['filters']['phavu_count']['expose']['label'] = 'Phavu Count';
-$handler->display->display_options['filters']['phavu_count']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['phavu_count']['expose']['operator'] = 'phavu_count_op';
-$handler->display->display_options['filters']['phavu_count']['expose']['identifier'] = 'phavu_count';
-$handler->display->display_options['filters']['phavu_count']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  4 => 0,
-);
-/* Filter criterion: domain: Glyma Count */
-$handler->display->display_options['filters']['glyma_count']['id'] = 'glyma_count';
-$handler->display->display_options['filters']['glyma_count']['table'] = 'domain';
-$handler->display->display_options['filters']['glyma_count']['field'] = 'glyma_count';
-$handler->display->display_options['filters']['glyma_count']['group'] = 1;
-$handler->display->display_options['filters']['glyma_count']['exposed'] = TRUE;
-$handler->display->display_options['filters']['glyma_count']['expose']['operator_id'] = 'glyma_count_op';
-$handler->display->display_options['filters']['glyma_count']['expose']['label'] = 'Glyma Count';
-$handler->display->display_options['filters']['glyma_count']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['glyma_count']['expose']['operator'] = 'glyma_count_op';
-$handler->display->display_options['filters']['glyma_count']['expose']['identifier'] = 'glyma_count';
-$handler->display->display_options['filters']['glyma_count']['expose']['remember_roles'] = array(
-  2 => '2',
-  1 => 0,
-  4 => 0,
-);
-/* Filter criterion: domain: Cajca Count */
-$handler->display->display_options['filters']['cajca_count']['id'] = 'cajca_count';
-$handler->display->display_options['filters']['cajca_count']['table'] = 'domain';
-$handler->display->display_options['filters']['cajca_count']['field'] = 'cajca_count';
-$handler->display->display_options['filters']['cajca_count']['group'] = 1;
-$handler->display->display_options['filters']['cajca_count']['exposed'] = TRUE;
-$handler->display->display_options['filters']['cajca_count']['expose']['operator_id'] = 'cajca_count_op';
-$handler->display->display_options['filters']['cajca_count']['expose']['label'] = 'Cajca Count';
-$handler->display->display_options['filters']['cajca_count']['expose']['use_operator'] = TRUE;
-$handler->display->display_options['filters']['cajca_count']['expose']['operator'] = 'cajca_count_op';
-$handler->display->display_options['filters']['cajca_count']['expose']['identifier'] = 'cajca_count';
-$handler->display->display_options['filters']['cajca_count']['expose']['remember_roles'] = array(
   2 => '2',
   1 => 0,
   4 => 0,
