@@ -271,7 +271,7 @@ $handler->display->display_options['fields']['araip_count']['alter']['make_link'
 $handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=Ara. ipaensis&domains=[feature_name]';
 $handler->display->display_options['fields']['araip_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['araip_count']['separator'] = '';
-/* Field: domain: Tree Count */
+/* Field: domain: Phylotree Count */
 $handler->display->display_options['fields']['tree_count']['id'] = 'tree_count';
 $handler->display->display_options['fields']['tree_count']['table'] = 'domain';
 $handler->display->display_options['fields']['tree_count']['field'] = 'tree_count';
