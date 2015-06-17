@@ -545,7 +545,7 @@ function tripal_domain_intergrate_view(){
 
   'tree_count' => array (
       'name' => 'tree_count',
-      'title' => 'Tree Count',
+      'title' => 'Phylotree Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
