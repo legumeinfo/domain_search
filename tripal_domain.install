@@ -140,9 +140,8 @@ coalesce(count_aradu_match.count, 0) as aradu_count,
 coalesce(count_araip_match.count, 0) as araip_count,
 coalesce(count_cajca_match.count, 0) as cajca_count,
 coalesce(count_cicar_match.count, 0) as cicar_count
-from chado.feature feature, chado.phylotree phylotree
+from chado.feature feature 
 LEFT JOIN chado_feature chado_feature ON feature.feature_id = chado_feature.feature_id
-LEFT JOIN chado_phylotree chado_phylotree ON phylotree.phylotree_id = chado_phylotree.phylotree_id
 LEFT JOIN trees_per_domain ON feature.feature_id = trees_per_domain.feature_id 
 LEFT JOIN count_match count_match ON feature.feature_id = count_match.srcfeature_id
 LEFT JOIN count_glyma_match ON feature.feature_id = count_glyma_match.srcfeature_id
