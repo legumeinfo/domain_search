@@ -75,6 +75,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'cajca_count' => 'cajca_count',
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
+  'tree_count'  => 'tree_count',
 );
 $handler->display->display_options['style_options']['default'] = '-1';
 $handler->display->display_options['style_options']['info'] = array(
@@ -162,6 +163,14 @@ $handler->display->display_options['style_options']['info'] = array(
     'separator' => '',
     'empty_column' => 0,
   ),
+ 'tree_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+
 );
 /* Footer: Global: Result summary */
 $handler->display->display_options['footer']['result']['id'] = 'result';
@@ -262,6 +271,14 @@ $handler->display->display_options['fields']['araip_count']['alter']['make_link'
 $handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=Ara. ipaensis&domains=[feature_name]';
 $handler->display->display_options['fields']['araip_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['araip_count']['separator'] = '';
+/* Field: domain: Tree Count */
+$handler->display->display_options['fields']['tree_count']['id'] = 'tree_count';
+$handler->display->display_options['fields']['tree_count']['table'] = 'domain';
+$handler->display->display_options['fields']['tree_count']['field'] = 'tree_count';
+$handler->display->display_options['fields']['tree_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['tree_count']['alter']['path'] = 'search/phylotree?domains=[feature_name]';
+$handler->display->display_options['fields']['tree_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['tree_count']['separator'] = '';
 /* Filter criterion: domain: Domain ID */
 $handler->display->display_options['filters']['feature_name']['id'] = 'feature_name';
 $handler->display->display_options['filters']['feature_name']['table'] = 'domain';
