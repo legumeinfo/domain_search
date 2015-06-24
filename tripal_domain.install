@@ -131,7 +131,6 @@ feature.name AS feature_name,
 description.name AS cvterm_name,
 description.accession AS IPRterm,
 description.definition AS feature_desc,
-trees_per_domain.count AS tree_count,
 coalesce(count_match.count, 0) as total_count,
 coalesce(count_glyma_match.count, 0) as glyma_count,
 coalesce(count_medtr_match.count, 0) as medtr_count,
@@ -139,7 +138,8 @@ coalesce(count_phavu_match.count, 0) as phavu_count,
 coalesce(count_aradu_match.count, 0) as aradu_count,
 coalesce(count_araip_match.count, 0) as araip_count,
 coalesce(count_cajca_match.count, 0) as cajca_count,
-coalesce(count_cicar_match.count, 0) as cicar_count
+coalesce(count_cicar_match.count, 0) as cicar_count,
+coalesce(trees_per_domain.count, 0) as tree_count
 from chado.feature feature 
 LEFT JOIN chado_feature chado_feature ON feature.feature_id = chado_feature.feature_id
 LEFT JOIN count_match count_match ON feature.feature_id = count_match.srcfeature_id
