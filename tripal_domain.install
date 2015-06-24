@@ -142,7 +142,6 @@ coalesce(count_cajca_match.count, 0) as cajca_count,
 coalesce(count_cicar_match.count, 0) as cicar_count
 from chado.feature feature 
 LEFT JOIN chado_feature chado_feature ON feature.feature_id = chado_feature.feature_id
-LEFT JOIN trees_per_domain ON feature.name = trees_per_domain.name 
 LEFT JOIN count_match count_match ON feature.feature_id = count_match.srcfeature_id
 LEFT JOIN count_glyma_match ON feature.feature_id = count_glyma_match.srcfeature_id
 LEFT JOIN count_medtr_match ON feature.feature_id = count_medtr_match.srcfeature_id
@@ -152,6 +151,7 @@ LEFT JOIN count_araip_match ON feature.feature_id = count_araip_match.srcfeature
 LEFT JOIN count_cajca_match ON feature.feature_id = count_cajca_match.srcfeature_id
 LEFT JOIN count_cicar_match ON feature.feature_id = count_cicar_match.srcfeature_id
 LEFT JOIN description ON feature.feature_id = description.feature_id
+LEFT JOIN trees_per_domain ON feature.name = trees_per_domain.name
 where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polypeptide_domain' and c.cv_id=cv.cv_id and cv.name='sequence')";
 
 
