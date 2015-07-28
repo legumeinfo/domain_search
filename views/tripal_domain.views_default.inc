@@ -76,6 +76,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
   'tree_count'  => 'tree_count',
+  'consensus_tree_count' => 'consensus_tree_count',
 );
 $handler->display->display_options['style_options']['default'] = '-1';
 $handler->display->display_options['style_options']['info'] = array(
@@ -164,6 +165,14 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
  'tree_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+
+'consensus_tree_count'=> array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -279,6 +288,14 @@ $handler->display->display_options['fields']['tree_count']['alter']['make_link']
 $handler->display->display_options['fields']['tree_count']['alter']['path'] = 'search/phylotree?domains=[feature_name]';
 $handler->display->display_options['fields']['tree_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['tree_count']['separator'] = '';
+/* Field: domain: Consensus_Phylotree Count */
+$handler->display->display_options['fields']['consensus_tree_count']['id'] = 'consensus_tree_count';
+$handler->display->display_options['fields']['consensus_tree_count']['table'] = 'domain';
+$handler->display->display_options['fields']['consensus_tree_count']['field'] = 'consensus_tree_count';
+$handler->display->display_options['fields']['consensus_tree_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['consensus_tree_count']['alter']['path'] = 'search/phylotree?domains_con=[feature_name]';
+$handler->display->display_options['fields']['consensus_tree_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['consensus_tree_count']['separator'] = '';
 /* Filter criterion: domain: Domain ID */
 $handler->display->display_options['filters']['feature_name']['id'] = 'feature_name';
 $handler->display->display_options['filters']['feature_name']['table'] = 'domain';
