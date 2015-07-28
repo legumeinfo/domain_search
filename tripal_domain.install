@@ -110,12 +110,10 @@ function tripal_domain_uninstall() {
 
 function tripal_domain_add_mview(){
  
-
-   
-    
+ 
   //Materialized view addition
   
- $sql_query="WITH count_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id from feature f INNER JOIN featureloc floc on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id where floc2.rank=0 and f.name is not null and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') group by floc.srcfeature_id),
+ $sql_query="WITH count_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id from feature f INNER JOIN featureloc floc on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and f.name is not null and O.genus!='consensus' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') group by floc.srcfeature_id),
 count_glyma_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Glycine' and O.species='max'  and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_medtr_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Medicago' and O.species='truncatula' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_phavu_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Phaseolus' and O.species='vulgaris' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
@@ -124,7 +122,8 @@ count_araip_match as (select count(distinct floc2.srcfeature_id) count, floc.src
 count_cajca_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Cajanus' and O.species='cajan' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_cicar_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Cicer' and O.species='arietinum' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 description as (select c.name,c.definition,cd.dbxref_id, d.accession, f.feature_id from dbxref d INNER JOIN cvterm c on d.dbxref_id=c.dbxref_id INNER JOIN cvterm_dbxref cd on c.cvterm_id = cd.cvterm_id INNER JOIN feature f on f.name = (select accession from dbxref where dbxref_id = cd.dbxref_id and db_id IN (select db_id from db where name IN ('PFAM','SMART','PIRSF','TIGRFAMs','GENE3D')))),
-trees_per_domain as (SELECT count(DISTINCT t.name) count, f1.name FROM phylotree t JOIN analysis a ON t.analysis_id=a.analysis_id JOIN phylonode n ON t.phylotree_id=n.phylotree_id JOIN feature f2 ON n.feature_id = f2.feature_id JOIN featureloc ON featureloc.srcfeature_id=f2.feature_id JOIN cvterm cvt2 ON cvt2.cvterm_id=f2.type_id JOIN feature f1 ON featureloc.feature_id=f1.feature_id WHERE cvt2.name='polypeptide' AND a.name='Phytozome 10.2 Angiosperm Gene Family Derived Trees' GROUP BY f1.name)
+trees_per_domain as (SELECT count(DISTINCT t.name) count, f1.name FROM phylotree t JOIN analysis a ON t.analysis_id=a.analysis_id JOIN phylonode n ON t.phylotree_id=n.phylotree_id JOIN feature f2 ON n.feature_id = f2.feature_id JOIN featureloc ON featureloc.srcfeature_id=f2.feature_id JOIN cvterm cvt2 ON cvt2.cvterm_id=f2.type_id JOIN feature f1 ON featureloc.feature_id=f1.feature_id WHERE cvt2.name='polypeptide' AND a.name='Phytozome 10.2 Angiosperm Gene Family Derived Trees' GROUP BY f1.name),
+consensus_tree_features_per_domain as (SELECT count(DISTINCT f.name) count, f2.name domain_name from feature f JOIN phylotree p ON f.name=p.name || '-consensus' JOIN featureloc ON featureloc.srcfeature_id=f.feature_id JOIN cvterm cvt ON cvt.cvterm_id=f.type_id JOIN feature f2 ON featureloc.feature_id=f2.feature_id WHERE cvt.name='consensus_region' GROUP BY domain_name)
 SELECT
 feature.feature_id AS feature_feature_id,
 feature.name AS feature_name,
@@ -139,7 +138,8 @@ coalesce(count_aradu_match.count, 0) as aradu_count,
 coalesce(count_araip_match.count, 0) as araip_count,
 coalesce(count_cajca_match.count, 0) as cajca_count,
 coalesce(count_cicar_match.count, 0) as cicar_count,
-coalesce(trees_per_domain.count, 0) as tree_count
+coalesce(trees_per_domain.count, 0) as tree_count,
+coalesce(consensus_tree_features_per_domain.count, 0) as consensus_tree_count
 from chado.feature feature 
 LEFT JOIN chado_feature chado_feature ON feature.feature_id = chado_feature.feature_id
 LEFT JOIN count_match count_match ON feature.feature_id = count_match.srcfeature_id
@@ -152,6 +152,7 @@ LEFT JOIN count_cajca_match ON feature.feature_id = count_cajca_match.srcfeature
 LEFT JOIN count_cicar_match ON feature.feature_id = count_cicar_match.srcfeature_id
 LEFT JOIN description ON feature.feature_id = description.feature_id
 LEFT JOIN trees_per_domain ON feature.name = trees_per_domain.name
+LEFT JOIN consensus_tree_features_per_domain ON feature.name = consensus_tree_features_per_domain.domain_name
 where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polypeptide_domain' and c.cv_id=cv.cv_id and cv.name='sequence')";
 
 
@@ -222,8 +223,14 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
    'tree_count' => array (
     'type' => 'int',
     'not null' => false,
+   ),
+
+  'consensus_tree_count' => array (
+  'type' => 'int',
+   'not null' => false,
    )
-  ),
+
+),
   'primary key' => array (
     0 => 'feature_feature_id',
   ),
@@ -240,6 +247,8 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
     $schema,      // schema api array representation
     $sql_query,         // sql query that loads the mview
     $comment );
+
+
 }
 
 /**
@@ -566,6 +575,29 @@ function tripal_domain_intergrate_view(){
       ),
     ),
 
+
+'consensus_tree_count' => array (
+      'name' => 'consensus_tree_count',
+      'title' => 'Consensus_Phylotree Count',
+      'description' => 'TODO: please describe this field!',
+      'type' => 'int',
+      'handlers' => array (
+        'filter' => array (
+          'name' => 'views_handler_filter_numeric',
+        ),
+        'field' => array (
+          'name' => 'views_handler_field_numeric',
+        ),
+        'sort' => array (
+          'name' => 'views_handler_sort',
+        ),
+        'argument' => array (
+          'name' => 'views_handler_argument_numeric',
+        ),
+      ),
+      'joins' => array (
+      ),
+    ),
 
   ),
 );
