@@ -30,6 +30,8 @@ $permissions = array('access chado_domain content');
 tripal_domain_grant_permissions(DRUPAL_AUTHENTICATED_RID, $permissions);
 $permissions_anonym = array('access chado_domain content');
 tripal_domain_grant_permissions(DRUPAL_ANONYMOUS_RID, $permissions_anonym);
+$permissions_admin = array('administer tripal domain');
+tripal_domain_grant_permissions(DRUPAL_AUTHENTICATED_RID, $permissions_admin);
 }
  
 
@@ -240,7 +242,7 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
 
    // add a comment to make sure this view makes sense to the site administator
   $comment = t('This view is used to provide a table for searching Protein Domain Pages.');
-  print "\nCreating domain mview.....should take 2-3 minutes to install\n";
+  print "\nCreating domain mview.....\n";
   tripal_add_mview(
     'domain', // name of materialized view
     'tripal_domain', // name of module submitting view
