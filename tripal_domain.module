@@ -219,6 +219,5 @@ function tripal_domain_text_deliver($page_callback_result) {
 	print $page_callback_result;
 	drupal_exit();
 }
-
 // hack to suppress the 'Submitted by...' info drupal adds to nodes
 $variables['display_submitted'] = FALSE;
