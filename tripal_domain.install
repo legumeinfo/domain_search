@@ -158,6 +158,7 @@ LEFT JOIN consensus_tree_features_per_domain ON feature.name = consensus_tree_fe
 where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polypeptide_domain' and c.cv_id=cv.cv_id and cv.name='sequence')";
 
 
+
     //Table domain description
 
 	$schema = array (
@@ -222,10 +223,10 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
       'not null' => false,
       
     ),
-   'tree_count' => array (
+    'tree_count' => array (
     'type' => 'int',
-    'not null' => false,
-   ),
+   'not null' => false,
+  ),
 
   'consensus_tree_count' => array (
   'type' => 'int',
@@ -554,10 +555,10 @@ function tripal_domain_intergrate_view(){
       ),
     ),
 
-  'tree_count' => array (
-      'name' => 'tree_count',
-      'title' => 'Phylotree Count',
-      'description' => 'TODO: please describe this field!',
+ 'tree_count' => array (
+     'name' => 'tree_count',
+    'title' => 'Phylotree Count',
+     'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
         'filter' => array (
@@ -580,7 +581,7 @@ function tripal_domain_intergrate_view(){
 
 'consensus_tree_count' => array (
       'name' => 'consensus_tree_count',
-      'title' => 'Consensus_Phylotree Count',
+      'title' => 'Family Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
