@@ -216,6 +216,14 @@ $handler->display->display_options['fields']['feature_desc']['alter']['more_link
 $handler->display->display_options['fields']['feature_desc']['alter']['more_link_text'] = 'more';
 $handler->display->display_options['fields']['feature_desc']['alter']['more_link_path'] = 'http://www.ebi.ac.uk/interpro/entry/[IPRterm]';
 $handler->display->display_options['fields']['feature_desc']['alter']['trim'] = TRUE;
+/* Field: domain: Family Count */
+$handler->display->display_options['fields']['consensus_tree_count']['id'] = 'consensus_tree_count';
+$handler->display->display_options['fields']['consensus_tree_count']['table'] = 'domain';
+$handler->display->display_options['fields']['consensus_tree_count']['field'] = 'consensus_tree_count';
+$handler->display->display_options['fields']['consensus_tree_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['consensus_tree_count']['alter']['path'] = 'search/phylotree?domains_con=[feature_name]';
+$handler->display->display_options['fields']['consensus_tree_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['consensus_tree_count']['separator'] = '';
 /* Field: domain: Total Count */
 $handler->display->display_options['fields']['total_count']['id'] = 'total_count';
 $handler->display->display_options['fields']['total_count']['table'] = 'domain';
@@ -280,7 +288,7 @@ $handler->display->display_options['fields']['araip_count']['alter']['make_link'
 $handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=Ara. ipaensis&domains=[feature_name]';
 $handler->display->display_options['fields']['araip_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['araip_count']['separator'] = '';
-/* Field: domain: Phylotree Count */
+/* Field: domain: Phylotree Count 
 $handler->display->display_options['fields']['tree_count']['id'] = 'tree_count';
 $handler->display->display_options['fields']['tree_count']['table'] = 'domain';
 $handler->display->display_options['fields']['tree_count']['field'] = 'tree_count';
@@ -288,14 +296,6 @@ $handler->display->display_options['fields']['tree_count']['alter']['make_link']
 $handler->display->display_options['fields']['tree_count']['alter']['path'] = 'search/phylotree?domains=[feature_name]';
 $handler->display->display_options['fields']['tree_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['tree_count']['separator'] = '';
-/* Field: domain: Consensus_Phylotree Count */
-$handler->display->display_options['fields']['consensus_tree_count']['id'] = 'consensus_tree_count';
-$handler->display->display_options['fields']['consensus_tree_count']['table'] = 'domain';
-$handler->display->display_options['fields']['consensus_tree_count']['field'] = 'consensus_tree_count';
-$handler->display->display_options['fields']['consensus_tree_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['consensus_tree_count']['alter']['path'] = 'search/phylotree?domains_con=[feature_name]';
-$handler->display->display_options['fields']['consensus_tree_count']['alter']['absolute'] = TRUE;
-$handler->display->display_options['fields']['consensus_tree_count']['separator'] = '';
 /* Filter criterion: domain: Domain ID */
 $handler->display->display_options['filters']['feature_name']['id'] = 'feature_name';
 $handler->display->display_options['filters']['feature_name']['table'] = 'domain';
@@ -313,7 +313,7 @@ $handler->display->display_options['filters']['feature_name']['expose']['remembe
   1 => 0,
   4 => 0,
 );
-$handler->display->display_options['filters']['feature_name']['max_length'] = '40';
+$handler->display->display_options['filters']['feature_name']['max_length'] = '20';
 /* Filter criterion: domain: Domain Name */
 $handler->display->display_options['filters']['cvterm_name']['id'] = 'cvterm_name';
 $handler->display->display_options['filters']['cvterm_name']['table'] = 'domain';
@@ -332,7 +332,7 @@ $handler->display->display_options['filters']['cvterm_name']['expose']['remember
   1 => 0,
   4 => 0,
 );
-$handler->display->display_options['filters']['cvterm_name']['max_length'] = '40';
+$handler->display->display_options['filters']['cvterm_name']['max_length'] = '20';
 /* Filter criterion: domain: Interpro term */
 $handler->display->display_options['filters']['IPRterm']['id'] = 'IPRterm';
 $handler->display->display_options['filters']['IPRterm']['table'] = 'domain';
@@ -350,7 +350,7 @@ $handler->display->display_options['filters']['IPRterm']['expose']['remember_rol
   1 => 0,
   4 => 0,
 );
-$handler->display->display_options['filters']['IPRterm']['max_length'] = '40';
+$handler->display->display_options['filters']['IPRterm']['max_length'] = '20';
 /* Filter criterion: domain: Description */
 $handler->display->display_options['filters']['feature_desc']['id'] = 'feature_desc';
 $handler->display->display_options['filters']['feature_desc']['table'] = 'domain';
