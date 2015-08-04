@@ -224,7 +224,7 @@ $handler->display->display_options['fields']['consensus_tree_count']['alter']['m
 $handler->display->display_options['fields']['consensus_tree_count']['alter']['path'] = 'search/phylotree?domains_con=[feature_name]';
 $handler->display->display_options['fields']['consensus_tree_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['consensus_tree_count']['separator'] = '';
-/* Field: domain: Total Count */
+/* Field: domain: Gene Count */
 $handler->display->display_options['fields']['total_count']['id'] = 'total_count';
 $handler->display->display_options['fields']['total_count']['table'] = 'domain';
 $handler->display->display_options['fields']['total_count']['field'] = 'total_count';
@@ -370,14 +370,30 @@ $handler->display->display_options['filters']['feature_desc']['expose']['remembe
   4 => 0,
 );
 $handler->display->display_options['filters']['feature_desc']['max_length'] = '40';
-/* Filter criterion: domain: Total Count */
+/* Filter criterion: domain: Family Count */
+$handler->display->display_options['filters']['consensus_tree_count']['id'] = 'consensus_tree_count';
+$handler->display->display_options['filters']['consensus_tree_count']['table'] = 'domain';
+$handler->display->display_options['filters']['consensus_tree_count']['field'] = 'consensus_tree_count';
+$handler->display->display_options['filters']['consensus_tree_count']['group'] = 1;
+$handler->display->display_options['filters']['consensus_tree_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['consensus_tree_count']['expose']['operator_id'] = 'consensus_tree_count_op';
+$handler->display->display_options['filters']['consensus_tree_count']['expose']['label'] = 'Family Count';
+$handler->display->display_options['filters']['consensus_tree_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['consensus_tree_count']['expose']['operator'] = 'consensus_tree_count_op';
+$handler->display->display_options['filters']['consensus_tree_count']['expose']['identifier'] = 'consensus_tree_count';
+$handler->display->display_options['filters']['consensus_tree_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: Gene Count */
 $handler->display->display_options['filters']['total_count']['id'] = 'total_count';
 $handler->display->display_options['filters']['total_count']['table'] = 'domain';
 $handler->display->display_options['filters']['total_count']['field'] = 'total_count';
 $handler->display->display_options['filters']['total_count']['group'] = 1;
 $handler->display->display_options['filters']['total_count']['exposed'] = TRUE;
 $handler->display->display_options['filters']['total_count']['expose']['operator_id'] = 'total_count_op';
-$handler->display->display_options['filters']['total_count']['expose']['label'] = 'Total Count';
+$handler->display->display_options['filters']['total_count']['expose']['label'] = 'Gene Count';
 $handler->display->display_options['filters']['total_count']['expose']['use_operator'] = TRUE;
 $handler->display->display_options['filters']['total_count']['expose']['operator'] = 'total_count_op';
 $handler->display->display_options['filters']['total_count']['expose']['identifier'] = 'total_count';
