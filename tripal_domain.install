@@ -380,7 +380,7 @@ function tripal_domain_intergrate_view(){
     ),
     'total_count' => array (
       'name' => 'total_count',
-      'title' => 'Total Count',
+      'title' => 'Gene Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
