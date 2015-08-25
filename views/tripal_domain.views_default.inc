@@ -75,6 +75,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'cajca_count' => 'cajca_count',
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
+  'vigra_count' => 'vigra_count',
   'tree_count'  => 'tree_count',
   'consensus_tree_count' => 'consensus_tree_count',
 );
@@ -123,6 +124,14 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'cicar_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+
+  'vigra_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -248,6 +257,14 @@ $handler->display->display_options['fields']['cicar_count']['alter']['make_link'
 $handler->display->display_options['fields']['cicar_count']['alter']['path'] = 'search/gene?abbreviation=Cic. arietinum&domains=[feature_name]';
 $handler->display->display_options['fields']['cicar_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['cicar_count']['separator'] = '';
+/* Field: domain: Vigra Count */
+$handler->display->display_options['fields']['vigra_count']['id'] = 'vigra_count';
+$handler->display->display_options['fields']['vigra_count']['table'] = 'domain';
+$handler->display->display_options['fields']['vigra_count']['field'] = 'vigra_count';
+$handler->display->display_options['fields']['vigra_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['vigra_count']['alter']['path'] = 'search/gene?abbreviation=Vig. radiata&domains=[feature_name]';
+$handler->display->display_options['fields']['vigra_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['vigra_count']['separator'] = '';
 /* Field: domain: Glyma Count */
 $handler->display->display_options['fields']['glyma_count']['id'] = 'glyma_count';
 $handler->display->display_options['fields']['glyma_count']['table'] = 'domain';
@@ -434,6 +451,23 @@ $handler->display->display_options['filters']['cicar_count']['expose']['remember
   1 => 0,
   4 => 0,
 );
+/* Filter criterion: domain: Vigra Count */
+$handler->display->display_options['filters']['vigra_count']['id'] = 'vigra_count';
+$handler->display->display_options['filters']['vigra_count']['table'] = 'domain';
+$handler->display->display_options['filters']['vigra_count']['field'] = 'vigra_count';
+$handler->display->display_options['filters']['vigra_count']['group'] = 1;
+$handler->display->display_options['filters']['vigra_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['vigra_count']['expose']['operator_id'] = 'vigra_count_op';
+$handler->display->display_options['filters']['vigra_count']['expose']['label'] = 'Vigra Count';
+$handler->display->display_options['filters']['vigra_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['vigra_count']['expose']['operator'] = 'vigra_count_op';
+$handler->display->display_options['filters']['vigra_count']['expose']['identifier'] = 'vigra_count';
+$handler->display->display_options['filters']['vigra_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+
 /* Filter criterion: domain: Phavu Count */
 $handler->display->display_options['filters']['phavu_count']['id'] = 'phavu_count';
 $handler->display->display_options['filters']['phavu_count']['table'] = 'domain';
