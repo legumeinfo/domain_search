@@ -69,6 +69,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'feature_desc' => 'feature_desc',
   'total_count' => 'total_count',
   'medtr_count' => 'medtr_count',
+  'lotja_count' => 'lotja_count',
   'cicar_count' => 'cicar_count',
   'glyma_count' => 'glyma_count',
   'phavu_count' => 'phavu_count',
@@ -117,6 +118,13 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'medtr_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'lotja_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -249,6 +257,14 @@ $handler->display->display_options['fields']['medtr_count']['alter']['make_link'
 $handler->display->display_options['fields']['medtr_count']['alter']['path'] = 'search/gene?abbreviation=Med. truncatula&domains=[feature_name]';
 $handler->display->display_options['fields']['medtr_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['medtr_count']['separator'] = '';
+/* Field: domain: Lotja Count */
+$handler->display->display_options['fields']['lotja_count']['id'] = 'lotja_count';
+$handler->display->display_options['fields']['lotja_count']['table'] = 'domain';
+$handler->display->display_options['fields']['lotja_count']['field'] = 'lotja_count';
+$handler->display->display_options['fields']['lotja_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['lotja_count']['alter']['path'] = 'search/gene?abbreviation=Lot. japonicus&domains=[feature_name]';
+$handler->display->display_options['fields']['lotja_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['lotja_count']['separator'] = '';
 /* Field: domain: Cicar Count */
 $handler->display->display_options['fields']['cicar_count']['id'] = 'cicar_count';
 $handler->display->display_options['fields']['cicar_count']['table'] = 'domain';
@@ -431,6 +447,22 @@ $handler->display->display_options['filters']['medtr_count']['expose']['use_oper
 $handler->display->display_options['filters']['medtr_count']['expose']['operator'] = 'medtr_count_op';
 $handler->display->display_options['filters']['medtr_count']['expose']['identifier'] = 'medtr_count';
 $handler->display->display_options['filters']['medtr_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: lotja Count */
+$handler->display->display_options['filters']['lotja_count']['id'] = 'lotja_count';
+$handler->display->display_options['filters']['lotja_count']['table'] = 'domain';
+$handler->display->display_options['filters']['lotja_count']['field'] = 'lotja_count';
+$handler->display->display_options['filters']['lotja_count']['group'] = 1;
+$handler->display->display_options['filters']['lotja_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['lotja_count']['expose']['operator_id'] = 'lotja_count_op';
+$handler->display->display_options['filters']['lotja_count']['expose']['label'] = 'Lotja Count';
+$handler->display->display_options['filters']['lotja_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['lotja_count']['expose']['operator'] = 'lotja_count_op';
+$handler->display->display_options['filters']['lotja_count']['expose']['identifier'] = 'lotja_count';
+$handler->display->display_options['filters']['lotja_count']['expose']['remember_roles'] = array(
   2 => '2',
   1 => 0,
   4 => 0,

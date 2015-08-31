@@ -118,6 +118,7 @@ function tripal_domain_add_mview(){
  $sql_query="WITH count_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id from feature f INNER JOIN featureloc floc on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and f.name is not null and O.genus!='consensus' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') group by floc.srcfeature_id),
 count_glyma_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Glycine' and O.species='max'  and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_medtr_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Medicago' and O.species='truncatula' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
+count_lotja_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Lotus' and O.species='japonicus' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_phavu_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Phaseolus' and O.species='vulgaris' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_aradu_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Arachis' and O.species='duranensis' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_araip_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Arachis' and O.species='ipaensis' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
@@ -136,6 +137,7 @@ description.definition AS feature_desc,
 coalesce(count_match.count, 0) as total_count,
 coalesce(count_glyma_match.count, 0) as glyma_count,
 coalesce(count_medtr_match.count, 0) as medtr_count,
+coalesce(count_lotja_match.count, 0) as lotja_count,
 coalesce(count_phavu_match.count, 0) as phavu_count,
 coalesce(count_aradu_match.count, 0) as aradu_count,
 coalesce(count_araip_match.count, 0) as araip_count,
@@ -149,6 +151,7 @@ LEFT JOIN chado_feature chado_feature ON feature.feature_id = chado_feature.feat
 LEFT JOIN count_match count_match ON feature.feature_id = count_match.srcfeature_id
 LEFT JOIN count_glyma_match ON feature.feature_id = count_glyma_match.srcfeature_id
 LEFT JOIN count_medtr_match ON feature.feature_id = count_medtr_match.srcfeature_id
+LEFT JOIN count_lotja_match ON feature.feature_id = count_lotja_match.srcfeature_id
 LEFT JOIN count_phavu_match ON feature.feature_id = count_phavu_match.srcfeature_id
 LEFT JOIN count_aradu_match ON feature.feature_id = count_aradu_match.srcfeature_id
 LEFT JOIN count_araip_match ON feature.feature_id = count_araip_match.srcfeature_id
@@ -197,6 +200,11 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
       
     ),
     'medtr_count' => array (
+      'type' => 'int',
+      'not null' => false,
+      
+    ),
+    'lotja_count' => array (
       'type' => 'int',
       'not null' => false,
       
@@ -434,6 +442,28 @@ function tripal_domain_intergrate_view(){
     'medtr_count' => array (
       'name' => 'medtr_count',
       'title' => 'Medtr Count',
+      'description' => 'TODO: please describe this field!',
+      'type' => 'int',
+      'handlers' => array (
+        'filter' => array (
+          'name' => 'views_handler_filter_numeric',
+        ),
+        'field' => array (
+          'name' => 'views_handler_field_numeric',
+        ),
+        'sort' => array (
+          'name' => 'views_handler_sort',
+        ),
+        'argument' => array (
+          'name' => 'views_handler_argument_numeric',
+        ),
+      ),
+      'joins' => array (
+      ),
+    ),
+    'lotja_count' => array (
+      'name' => 'lotja_count',
+      'title' => 'Lotja Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
