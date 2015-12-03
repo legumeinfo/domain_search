@@ -254,7 +254,7 @@ $handler->display->display_options['fields']['medtr_count']['id'] = 'medtr_count
 $handler->display->display_options['fields']['medtr_count']['table'] = 'domain';
 $handler->display->display_options['fields']['medtr_count']['field'] = 'medtr_count';
 $handler->display->display_options['fields']['medtr_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['medtr_count']['alter']['path'] = 'search/gene?abbreviation=Med. truncatula&domains=[feature_name]';
+$handler->display->display_options['fields']['medtr_count']['alter']['path'] = 'search/gene?abbreviation=medtr&domains=[feature_name]';
 $handler->display->display_options['fields']['medtr_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['medtr_count']['separator'] = '';
 /* Field: domain: Lotja Count */
@@ -262,7 +262,7 @@ $handler->display->display_options['fields']['lotja_count']['id'] = 'lotja_count
 $handler->display->display_options['fields']['lotja_count']['table'] = 'domain';
 $handler->display->display_options['fields']['lotja_count']['field'] = 'lotja_count';
 $handler->display->display_options['fields']['lotja_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['lotja_count']['alter']['path'] = 'search/gene?abbreviation=Lot. japonicus&domains=[feature_name]';
+$handler->display->display_options['fields']['lotja_count']['alter']['path'] = 'search/gene?abbreviation=lotja&domains=[feature_name]';
 $handler->display->display_options['fields']['lotja_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['lotja_count']['separator'] = '';
 /* Field: domain: Cicar Count */
@@ -270,7 +270,7 @@ $handler->display->display_options['fields']['cicar_count']['id'] = 'cicar_count
 $handler->display->display_options['fields']['cicar_count']['table'] = 'domain';
 $handler->display->display_options['fields']['cicar_count']['field'] = 'cicar_count';
 $handler->display->display_options['fields']['cicar_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['cicar_count']['alter']['path'] = 'search/gene?abbreviation=Cic. arietinum&domains=[feature_name]';
+$handler->display->display_options['fields']['cicar_count']['alter']['path'] = 'search/gene?abbreviation=cicar&domains=[feature_name]';
 $handler->display->display_options['fields']['cicar_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['cicar_count']['separator'] = '';
 /* Field: domain: Vigra Count */
@@ -278,7 +278,7 @@ $handler->display->display_options['fields']['vigra_count']['id'] = 'vigra_count
 $handler->display->display_options['fields']['vigra_count']['table'] = 'domain';
 $handler->display->display_options['fields']['vigra_count']['field'] = 'vigra_count';
 $handler->display->display_options['fields']['vigra_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['vigra_count']['alter']['path'] = 'search/gene?abbreviation=Vig. radiata&domains=[feature_name]';
+$handler->display->display_options['fields']['vigra_count']['alter']['path'] = 'search/gene?abbreviation=vigra&domains=[feature_name]';
 $handler->display->display_options['fields']['vigra_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['vigra_count']['separator'] = '';
 /* Field: domain: Glyma Count */
@@ -286,7 +286,7 @@ $handler->display->display_options['fields']['glyma_count']['id'] = 'glyma_count
 $handler->display->display_options['fields']['glyma_count']['table'] = 'domain';
 $handler->display->display_options['fields']['glyma_count']['field'] = 'glyma_count';
 $handler->display->display_options['fields']['glyma_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['glyma_count']['alter']['path'] = 'search/gene?abbreviation=Gly. max&domains=[feature_name]';
+$handler->display->display_options['fields']['glyma_count']['alter']['path'] = 'search/gene?abbreviation=glyma&domains=[feature_name]';
 $handler->display->display_options['fields']['glyma_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['glyma_count']['separator'] = '';
 /* Field: domain: Phavu Count */
@@ -294,7 +294,7 @@ $handler->display->display_options['fields']['phavu_count']['id'] = 'phavu_count
 $handler->display->display_options['fields']['phavu_count']['table'] = 'domain';
 $handler->display->display_options['fields']['phavu_count']['field'] = 'phavu_count';
 $handler->display->display_options['fields']['phavu_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['phavu_count']['alter']['path'] = 'search/gene?abbreviation=Pha. vulgaris&domains=[feature_name]';
+$handler->display->display_options['fields']['phavu_count']['alter']['path'] = 'search/gene?abbreviation=phavu&domains=[feature_name]';
 $handler->display->display_options['fields']['phavu_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['phavu_count']['separator'] = '';
 /* Field: domain: Cajca Count */
@@ -302,7 +302,7 @@ $handler->display->display_options['fields']['cajca_count']['id'] = 'cajca_count
 $handler->display->display_options['fields']['cajca_count']['table'] = 'domain';
 $handler->display->display_options['fields']['cajca_count']['field'] = 'cajca_count';
 $handler->display->display_options['fields']['cajca_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['cajca_count']['alter']['path'] = 'search/gene?abbreviation=Caj. cajan&domains=[feature_name]';
+$handler->display->display_options['fields']['cajca_count']['alter']['path'] = 'search/gene?abbreviation=cajca&domains=[feature_name]';
 $handler->display->display_options['fields']['cajca_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['cajca_count']['separator'] = '';
 /* Field: domain: Aradu Count */
@@ -310,7 +310,7 @@ $handler->display->display_options['fields']['aradu_count']['id'] = 'aradu_count
 $handler->display->display_options['fields']['aradu_count']['table'] = 'domain';
 $handler->display->display_options['fields']['aradu_count']['field'] = 'aradu_count';
 $handler->display->display_options['fields']['aradu_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['aradu_count']['alter']['path'] = 'search/gene?abbreviation=Ara. duranensis&domains=[feature_name]';
+$handler->display->display_options['fields']['aradu_count']['alter']['path'] = 'search/gene?abbreviation=aradu&domains=[feature_name]';
 $handler->display->display_options['fields']['aradu_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['aradu_count']['separator'] = '';
 /* Field: domain: Araip Count */
@@ -318,7 +318,7 @@ $handler->display->display_options['fields']['araip_count']['id'] = 'araip_count
 $handler->display->display_options['fields']['araip_count']['table'] = 'domain';
 $handler->display->display_options['fields']['araip_count']['field'] = 'araip_count';
 $handler->display->display_options['fields']['araip_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=Ara. ipaensis&domains=[feature_name]';
+$handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=araip&domains=[feature_name]';
 $handler->display->display_options['fields']['araip_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['araip_count']['separator'] = '';
 /* Field: domain: Phylotree Count 
