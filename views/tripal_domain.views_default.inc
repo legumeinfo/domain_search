@@ -72,6 +72,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'lotja_count' => 'lotja_count',
   'cicar_count' => 'cicar_count',
   'tripr_count' => 'tripr_count',
+  'vigan_count' => 'vigan_count',
   'glyma_count' => 'glyma_count',
   'phavu_count' => 'phavu_count',
   'cajca_count' => 'cajca_count',
@@ -146,6 +147,14 @@ $handler->display->display_options['style_options']['info'] = array(
     'separator' => '',
     'empty_column' => 0,
   ),
+  'vigan_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+
   'vigra_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
@@ -288,6 +297,14 @@ $handler->display->display_options['fields']['tripr_count']['alter']['make_link'
 $handler->display->display_options['fields']['tripr_count']['alter']['path'] = 'search/gene?abbreviation=tripr&domains=[feature_name]';
 $handler->display->display_options['fields']['tripr_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['tripr_count']['separator'] = '';
+/* Field: domain: Vigan Count */
+$handler->display->display_options['fields']['vigan_count']['id'] = 'vigan_count';
+$handler->display->display_options['fields']['vigan_count']['table'] = 'domain';
+$handler->display->display_options['fields']['vigan_count']['field'] = 'vigan_count';
+$handler->display->display_options['fields']['vigan_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['vigan_count']['alter']['path'] = 'search/gene?abbreviation=vigan&domains=[feature_name]';
+$handler->display->display_options['fields']['vigan_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['vigan_count']['separator'] = '';
 /* Field: domain: Vigra Count */
 $handler->display->display_options['fields']['vigra_count']['id'] = 'vigra_count';
 $handler->display->display_options['fields']['vigra_count']['table'] = 'domain';
@@ -514,6 +531,24 @@ $handler->display->display_options['filters']['tripr_count']['expose']['remember
   1 => 0,
   4 => 0,
 );
+
+/* Filter criterion: domain: Vigan Count */
+$handler->display->display_options['filters']['vigan_count']['id'] = 'vigan_count';
+$handler->display->display_options['filters']['vigan_count']['table'] = 'domain';
+$handler->display->display_options['filters']['vigan_count']['field'] = 'vigan_count';
+$handler->display->display_options['filters']['vigan_count']['group'] = 1;
+$handler->display->display_options['filters']['vigan_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['vigan_count']['expose']['operator_id'] = 'vigan_count_op';
+$handler->display->display_options['filters']['vigan_count']['expose']['label'] = 'Vigan Count';
+$handler->display->display_options['filters']['vigan_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['vigan_count']['expose']['operator'] = 'vigan_count_op';
+$handler->display->display_options['filters']['vigan_count']['expose']['identifier'] = 'vigan_count';
+$handler->display->display_options['filters']['vigan_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+
 /* Filter criterion: domain: Vigra Count */
 $handler->display->display_options['filters']['vigra_count']['id'] = 'vigra_count';
 $handler->display->display_options['filters']['vigra_count']['table'] = 'domain';
