@@ -24,6 +24,35 @@ require_once 'includes/tripal_domain.admin.inc';
  *
  * @ingroup tripal_phylotree
  */
+
+
+
+
+/**
+  * hook_form_alter
+  *
+  * Add a validator to the search form.
+* */
+
+function tripal_domain_form_alter(&$form, &$form_state, $form_id) {
+//drupal_set_message("Form ID is: $form_id"); – uncomment to verify form name
+if ($form_id == 'views_exposed_form') { $form['#validate'][] = 'tripal_domain_form_validate'; 
+//drupal_set_message("Validation is set to " . var_export($form['#validate'], true)); -- uncomment to verify validator was added 
+ }
+}
+/**
+  * Form validator for search form.
+  * Use this to trim whitespace from text fields.
+  */
+function tripal_domain_form_validate($form, &$form_state) { 
+//drupal_set_message("Form values are " . var_export($form_state['values'], true)); -- uncomment to see form field names 
+$form_state['values']['feature_name'] = trim($form_state['values']['feature_name']);
+$form_state['values']['cvterm_name'] = trim($form_state['values']['cvterm_name']);
+$form_state['values']['IPRterm'] = trim($form_state['values']['IPRterm']);
+$form_state['values']['feature_desc'] = trim($form_state['values']['feature_desc']);
+}
+
+
 function tripal_domain_permission() {
   return array(
 
