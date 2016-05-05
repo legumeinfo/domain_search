@@ -281,7 +281,7 @@ $handler->display->display_options['fields']['lotja_count']['alter']['make_link'
 $handler->display->display_options['fields']['lotja_count']['alter']['path'] = 'search/gene?abbreviation=lotja&domains=[feature_name]';
 $handler->display->display_options['fields']['lotja_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['lotja_count']['separator'] = '';
-/* Field: domain: Cicar Count */
+/* Field: domain: Cicar (CDCFrontier) Count */
 $handler->display->display_options['fields']['cicar_count']['id'] = 'cicar_count';
 $handler->display->display_options['fields']['cicar_count']['table'] = 'domain';
 $handler->display->display_options['fields']['cicar_count']['field'] = 'cicar_count';
@@ -499,14 +499,14 @@ $handler->display->display_options['filters']['lotja_count']['expose']['remember
   1 => 0,
   4 => 0,
 );
-/* Filter criterion: domain: Cicar Count */
+/* Filter criterion: domain: Cicar (CDCFrontier) Count */
 $handler->display->display_options['filters']['cicar_count']['id'] = 'cicar_count';
 $handler->display->display_options['filters']['cicar_count']['table'] = 'domain';
 $handler->display->display_options['filters']['cicar_count']['field'] = 'cicar_count';
 $handler->display->display_options['filters']['cicar_count']['group'] = 1;
 $handler->display->display_options['filters']['cicar_count']['exposed'] = TRUE;
 $handler->display->display_options['filters']['cicar_count']['expose']['operator_id'] = 'cicar_count_op';
-$handler->display->display_options['filters']['cicar_count']['expose']['label'] = 'Cicar Count';
+$handler->display->display_options['filters']['cicar_count']['expose']['label'] = 'Cicar (CDCFrontier) Count';
 $handler->display->display_options['filters']['cicar_count']['expose']['use_operator'] = TRUE;
 $handler->display->display_options['filters']['cicar_count']['expose']['operator'] = 'cicar_count_op';
 $handler->display->display_options['filters']['cicar_count']['expose']['identifier'] = 'cicar_count';

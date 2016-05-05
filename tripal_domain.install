@@ -590,7 +590,7 @@ function tripal_domain_intergrate_view(){
     ),
     'cicar_count' => array (
       'name' => 'cicar_count',
-      'title' => 'Cicar Count',
+      'title' => 'Cicar (CDCFrontier) Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
