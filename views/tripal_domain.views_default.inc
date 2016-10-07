@@ -286,7 +286,7 @@ $handler->display->display_options['fields']['cicar_count']['id'] = 'cicar_count
 $handler->display->display_options['fields']['cicar_count']['table'] = 'domain';
 $handler->display->display_options['fields']['cicar_count']['field'] = 'cicar_count';
 $handler->display->display_options['fields']['cicar_count']['alter']['make_link'] = TRUE;
-$handler->display->display_options['fields']['cicar_count']['alter']['path'] = 'search/gene?abbreviation=cicar&domains=[feature_name]';
+$handler->display->display_options['fields']['cicar_count']['alter']['path'] = 'search/gene?abbreviation=cicar.CDCFrontier&domains=[feature_name]';
 $handler->display->display_options['fields']['cicar_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['cicar_count']['separator'] = '';
 /* Field: domain: Tripr Count */
