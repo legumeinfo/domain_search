@@ -204,7 +204,10 @@ function tripal_domain_block_view($delta='') {
    * return string
    */
 function theblock_contents() {
-   return 'This page provides a search tool and information about protein domain annotations that are derived from InterproScan analysis. We have also provided here the count of number of genes per species  that are associated with each of these domains, which when clicked will redirect you to gene and gene_family information.';
+  $html = '<span style="font-family:helvetica;font-size:12pt">';
+  $html .= 'This page provides a search tool and information about protein domain annotations that are derived from InterproScan analysis. We have also provided here the count of number of genes per species  that are associated with each of these domains, which when clicked will redirect you to gene and gene_family information.';
+  $html .= "</span>";
+  return $html;
 }
 
 /* End: block at the top with user help info*/
