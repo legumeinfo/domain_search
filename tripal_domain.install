@@ -20,26 +20,21 @@ function tripal_domain_requirements($phase) {
 }
 
 
-
-
-
 /* hook_enable()*/
-
 function tripal_domain_enable(){
-$permissions = array('access chado_domain content');
-tripal_domain_grant_permissions(DRUPAL_AUTHENTICATED_RID, $permissions);
-$permissions_anonym = array('access chado_domain content');
-tripal_domain_grant_permissions(DRUPAL_ANONYMOUS_RID, $permissions_anonym);
+  $permissions = array('access chado_domain content');
+  tripal_domain_grant_permissions(DRUPAL_AUTHENTICATED_RID, $permissions);
+  $permissions_anonym = array('access chado_domain content');
+  tripal_domain_grant_permissions(DRUPAL_ANONYMOUS_RID, $permissions_anonym);
+  $permissions_admin = array('administer tripal domain');
+  tripal_domain_grant_permissions(DRUPAL_AUTHENTICATED_RID, $permissions_admin);
 }
  
-
 
 /**
  * Implements hook_install()
  * Allows installation of the tripal_domain module
  */
-
-
 function tripal_domain_install() {
    // add the materializedviews
    tripal_domain_add_mview();
@@ -54,11 +49,10 @@ function tripal_domain_install() {
 
 }
 
+
 /**
  * Implementation of hook_grant_permissions(). peu added
  */
-
-
 function tripal_domain_grant_permissions($rid, array $permissions = array()) {
    
    // this line doesn't work on install / enable hooks
