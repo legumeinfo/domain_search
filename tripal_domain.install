@@ -125,6 +125,7 @@ count_araip_match as (select count(distinct floc2.srcfeature_id) count, floc.src
 count_lupan_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Lupinus' and O.species='angustifolius' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_cajca_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Cajanus' and O.species='cajan' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_cicar_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Cicer' and O.species='arietinum' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
+count_vigun_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Vigna' and O.species='unguiculata'  and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_vigra_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Vigna' and O.species='radiata'  and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_tripr_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Trifolium' and O.species='pratense'  and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 description as (select c.name,c.definition,cd.dbxref_id, d.accession, f.feature_id from dbxref d INNER JOIN cvterm c on d.dbxref_id=c.dbxref_id INNER JOIN cvterm_dbxref cd on c.cvterm_id = cd.cvterm_id INNER JOIN feature f on f.name = (select accession from dbxref where dbxref_id = cd.dbxref_id and db_id IN (select db_id from db where name IN ('PFAM','SMART','PIRSF','TIGRFAMs','GENE3D')))),
@@ -146,6 +147,7 @@ coalesce(count_araip_match.count, 0) as araip_count,
 coalesce(count_lupan_match.count, 0) as lupan_count,
 coalesce(count_cajca_match.count, 0) as cajca_count,
 coalesce(count_cicar_match.count, 0) as cicar_count,
+coalesce(count_vigun_match.count, 0) as vigun_count,
 coalesce(count_vigra_match.count, 0) as vigra_count,
 coalesce(count_tripr_match.count, 0) as tripr_count,
 coalesce(trees_per_domain.count, 0) as tree_count,
@@ -162,6 +164,7 @@ LEFT JOIN count_araip_match ON feature.feature_id = count_araip_match.srcfeature
 LEFT JOIN count_lupan_match ON feature.feature_id = count_lupan_match.srcfeature_id
 LEFT JOIN count_cajca_match ON feature.feature_id = count_cajca_match.srcfeature_id
 LEFT JOIN count_cicar_match ON feature.feature_id = count_cicar_match.srcfeature_id
+LEFT JOIN count_vigun_match ON feature.feature_id = count_vigun_match.srcfeature_id
 LEFT JOIN count_vigra_match ON feature.feature_id = count_vigra_match.srcfeature_id
 LEFT JOIN count_tripr_match ON feature.feature_id = count_tripr_match.srcfeature_id
 LEFT JOIN description ON feature.feature_id = description.feature_id
@@ -245,6 +248,11 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
       'not null' => false,
       
     ),
+   'vigun_count' => array (
+      'type' => 'int',
+      'not null' => false,
+
+    ),  
    'vigra_count' => array (
       'type' => 'int',
       'not null' => false,
@@ -612,6 +620,29 @@ function tripal_domain_intergrate_view(){
     'cicar_count' => array (
       'name' => 'cicar_count',
       'title' => 'Cicar Count',
+      'description' => 'TODO: please describe this field!',
+      'type' => 'int',
+      'handlers' => array (
+        'filter' => array (
+          'name' => 'views_handler_filter_numeric',
+        ),
+        'field' => array (
+          'name' => 'views_handler_field_numeric',
+        ),
+        'sort' => array (
+          'name' => 'views_handler_sort',
+        ),
+        'argument' => array (
+          'name' => 'views_handler_argument_numeric',
+        ),
+      ),
+      'joins' => array (
+      ),
+    ),
+
+'vigun_count' => array (
+      'name' => 'vigun_count',
+      'title' => 'Vigun Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (
