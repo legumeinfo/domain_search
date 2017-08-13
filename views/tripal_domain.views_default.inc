@@ -78,6 +78,8 @@ $handler->display->display_options['style_options']['columns'] = array(
   'cajca_count' => 'cajca_count',
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
+  'lupan_count' => 'lupan_count',
+  'vigun_count' => 'vigun_count',
   'vigra_count' => 'vigra_count',
   'tree_count'  => 'tree_count',
   'consensus_tree_count' => 'consensus_tree_count',
@@ -154,7 +156,13 @@ $handler->display->display_options['style_options']['info'] = array(
     'separator' => '',
     'empty_column' => 0,
   ),
-
+  'vigun_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
   'vigra_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
@@ -191,6 +199,13 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'araip_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'lupan_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -305,6 +320,14 @@ $handler->display->display_options['fields']['vigan_count']['alter']['make_link'
 $handler->display->display_options['fields']['vigan_count']['alter']['path'] = 'search/gene?abbreviation=vigan&domains=[feature_name]';
 $handler->display->display_options['fields']['vigan_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['vigan_count']['separator'] = '';
+/* Field: domain: Vigun Count */
+$handler->display->display_options['fields']['vigun_count']['id'] = 'vigun_count';
+$handler->display->display_options['fields']['vigun_count']['table'] = 'domain';
+$handler->display->display_options['fields']['vigun_count']['field'] = 'vigun_count';
+$handler->display->display_options['fields']['vigun_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['vigun_count']['alter']['path'] = 'search/gene?abbreviation=vigun&domains=[feature_name]';
+$handler->display->display_options['fields']['vigun_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['vigun_count']['separator'] = '';
 /* Field: domain: Vigra Count */
 $handler->display->display_options['fields']['vigra_count']['id'] = 'vigra_count';
 $handler->display->display_options['fields']['vigra_count']['table'] = 'domain';
@@ -353,6 +376,14 @@ $handler->display->display_options['fields']['araip_count']['alter']['make_link'
 $handler->display->display_options['fields']['araip_count']['alter']['path'] = 'search/gene?abbreviation=araip&domains=[feature_name]';
 $handler->display->display_options['fields']['araip_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['araip_count']['separator'] = '';
+/* Field: domain: Lupan Count */
+$handler->display->display_options['fields']['lupan_count']['id'] = 'lupan_count';
+$handler->display->display_options['fields']['lupan_count']['table'] = 'domain';
+$handler->display->display_options['fields']['lupan_count']['field'] = 'lupan_count';
+$handler->display->display_options['fields']['lupan_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['lupan_count']['alter']['path'] = 'search/gene?abbreviation=lupan&domains=[feature_name]';
+$handler->display->display_options['fields']['lupan_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['lupan_count']['separator'] = '';
 /* Field: domain: Phylotree Count 
 $handler->display->display_options['fields']['tree_count']['id'] = 'tree_count';
 $handler->display->display_options['fields']['tree_count']['table'] = 'domain';
@@ -531,7 +562,6 @@ $handler->display->display_options['filters']['tripr_count']['expose']['remember
   1 => 0,
   4 => 0,
 );
-
 /* Filter criterion: domain: Vigan Count */
 $handler->display->display_options['filters']['vigan_count']['id'] = 'vigan_count';
 $handler->display->display_options['filters']['vigan_count']['table'] = 'domain';
@@ -548,7 +578,22 @@ $handler->display->display_options['filters']['vigan_count']['expose']['remember
   1 => 0,
   4 => 0,
 );
-
+/* Filter criterion: domain: Vigun Count */
+$handler->display->display_options['filters']['vigun_count']['id'] = 'vigun_count';
+$handler->display->display_options['filters']['vigun_count']['table'] = 'domain';
+$handler->display->display_options['filters']['vigun_count']['field'] = 'vigun_count';
+$handler->display->display_options['filters']['vigun_count']['group'] = 1;
+$handler->display->display_options['filters']['vigun_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['vigun_count']['expose']['operator_id'] = 'vigun_count_op';
+$handler->display->display_options['filters']['vigun_count']['expose']['label'] = 'Vigun Count';
+$handler->display->display_options['filters']['vigun_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['vigun_count']['expose']['operator'] = 'vigun_count_op';
+$handler->display->display_options['filters']['vigun_count']['expose']['identifier'] = 'vigun_count';
+$handler->display->display_options['filters']['vigun_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
 /* Filter criterion: domain: Vigra Count */
 $handler->display->display_options['filters']['vigra_count']['id'] = 'vigra_count';
 $handler->display->display_options['filters']['vigra_count']['table'] = 'domain';
@@ -642,6 +687,22 @@ $handler->display->display_options['filters']['araip_count']['expose']['use_oper
 $handler->display->display_options['filters']['araip_count']['expose']['operator'] = 'araip_count_op';
 $handler->display->display_options['filters']['araip_count']['expose']['identifier'] = 'araip_count';
 $handler->display->display_options['filters']['araip_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: Lupan Count */
+$handler->display->display_options['filters']['lupan_count']['id'] = 'lupan_count';
+$handler->display->display_options['filters']['lupan_count']['table'] = 'domain';
+$handler->display->display_options['filters']['lupan_count']['field'] = 'lupan_count';
+$handler->display->display_options['filters']['lupan_count']['group'] = 1;
+$handler->display->display_options['filters']['lupan_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['lupan_count']['expose']['operator_id'] = 'lupan_count_op';
+$handler->display->display_options['filters']['lupan_count']['expose']['label'] = 'Lupan Count';
+$handler->display->display_options['filters']['lupan_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['lupan_count']['expose']['operator'] = 'lupan_count_op';
+$handler->display->display_options['filters']['lupan_count']['expose']['identifier'] = 'lupan_count';
+$handler->display->display_options['filters']['lupan_count']['expose']['remember_roles'] = array(
   2 => '2',
   1 => 0,
   4 => 0,
