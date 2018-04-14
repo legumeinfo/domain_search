@@ -68,6 +68,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'IPRterm' => 'IPRterm',
   'feature_desc' => 'feature_desc',
   'total_count' => 'total_count',
+  'arahy_count' => 'arahy_count',
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
 );
@@ -102,6 +103,13 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'total_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'arahy_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -166,6 +174,14 @@ $handler->display->display_options['fields']['total_count']['alter']['make_link'
 $handler->display->display_options['fields']['total_count']['alter']['path'] = 'search/gene?domains=[feature_name]';
 $handler->display->display_options['fields']['total_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['total_count']['separator'] = '';
+/* Field: domain: Arahy Count */
+$handler->display->display_options['fields']['arahy_count']['id'] = 'arahy_count';
+$handler->display->display_options['fields']['arahy_count']['table'] = 'domain';
+$handler->display->display_options['fields']['arahy_count']['field'] = 'arahy_count';
+$handler->display->display_options['fields']['arahy_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['arahy_count']['alter']['path'] = 'search/gene?abbreviation=arahy&domains=[feature_name]';
+$handler->display->display_options['fields']['arahy_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['arahy_count']['separator'] = '';
 /* Field: domain: Aradu Count */
 $handler->display->display_options['fields']['aradu_count']['id'] = 'aradu_count';
 $handler->display->display_options['fields']['aradu_count']['table'] = 'domain';
@@ -268,6 +284,22 @@ $handler->display->display_options['filters']['total_count']['expose']['use_oper
 $handler->display->display_options['filters']['total_count']['expose']['operator'] = 'total_count_op';
 $handler->display->display_options['filters']['total_count']['expose']['identifier'] = 'total_count';
 $handler->display->display_options['filters']['total_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: Arahy Count */
+$handler->display->display_options['filters']['arahy_count']['id'] = 'arahy_count';
+$handler->display->display_options['filters']['arahy_count']['table'] = 'domain';
+$handler->display->display_options['filters']['arahy_count']['field'] = 'arahy_count';
+$handler->display->display_options['filters']['arahy_count']['group'] = 1;
+$handler->display->display_options['filters']['arahy_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['arahy_count']['expose']['operator_id'] = 'arahy_count_op';
+$handler->display->display_options['filters']['arahy_count']['expose']['label'] = 'Arahy Count';
+$handler->display->display_options['filters']['arahy_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['arahy_count']['expose']['operator'] = 'arahy_count_op';
+$handler->display->display_options['filters']['arahy_count']['expose']['identifier'] = 'arahy_count';
+$handler->display->display_options['filters']['arahy_count']['expose']['remember_roles'] = array(
   2 => '2',
   1 => 0,
   4 => 0,
