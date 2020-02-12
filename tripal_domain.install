@@ -124,6 +124,8 @@ count_aradu_match as (select count(distinct floc2.srcfeature_id) count, floc.src
 count_araip_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Arachis' and O.species='ipaensis' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_arahy_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Arachis' and O.species='hypogaea' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_lupan_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Lupinus' and O.species='angustifolius' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
+count_lupal_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Lupinus' and O.species='albus' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
+count_pissa_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Pisum' and O.species='sativum' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_cajca_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Cajanus' and O.species='cajan' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_cicar_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Cicer' and O.species='arietinum_CDCFrontier' and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
 count_vigun_match as (select count(distinct floc2.srcfeature_id) count, floc.srcfeature_id FROM featureloc floc INNER JOIN feature f on floc.feature_id=f.feature_id INNER JOIN featureloc floc2 ON floc2.feature_id=floc.feature_id INNER JOIN organism O on O.organism_id=f.organism_id where floc2.rank=0 and O.genus='Vigna' and O.species='unguiculata'  and f.type_id=(select cvterm_id from cvterm c,cv where c.name='protein_hmm_match' and c.cv_id=cv.cv_id and cv.name='sequence') GROUP BY floc.srcfeature_id),
@@ -148,6 +150,8 @@ coalesce(count_aradu_match.count, 0) as aradu_count,
 coalesce(count_araip_match.count, 0) as araip_count,
 coalesce(count_arahy_match.count, 0) as arahy_count,
 coalesce(count_lupan_match.count, 0) as lupan_count,
+coalesce(count_lupal_match.count, 0) as lupal_count,
+coalesce(count_pissa_match.count, 0) as pissa_count,
 coalesce(count_cajca_match.count, 0) as cajca_count,
 coalesce(count_cicar_match.count, 0) as cicar_count,
 coalesce(count_vigun_match.count, 0) as vigun_count,
@@ -167,6 +171,8 @@ LEFT JOIN count_aradu_match ON feature.feature_id = count_aradu_match.srcfeature
 LEFT JOIN count_araip_match ON feature.feature_id = count_araip_match.srcfeature_id
 LEFT JOIN count_arahy_match ON feature.feature_id = count_arahy_match.srcfeature_id
 LEFT JOIN count_lupan_match ON feature.feature_id = count_lupan_match.srcfeature_id
+LEFT JOIN count_lupal_match ON feature.feature_id = count_lupal_match.srcfeature_id
+LEFT JOIN count_pissa_match ON feature.feature_id = count_pissa_match.srcfeature_id
 LEFT JOIN count_cajca_match ON feature.feature_id = count_cajca_match.srcfeature_id
 LEFT JOIN count_cicar_match ON feature.feature_id = count_cicar_match.srcfeature_id
 LEFT JOIN count_vigun_match ON feature.feature_id = count_vigun_match.srcfeature_id
@@ -245,6 +251,16 @@ where feature.type_id IN (select cvterm_id from cvterm c,cv where c.name='polype
       
     ),
     'lupan_count' => array (
+      'type' => 'int',
+      'not null' => false,
+      
+    ),
+    'lupal_count' => array (
+      'type' => 'int',
+      'not null' => false,
+      
+    ),
+    'pissa_count' => array (
       'type' => 'int',
       'not null' => false,
       
@@ -615,6 +631,50 @@ function tripal_domain_intergrate_view(){
     'lupan_count' => array (
       'name' => 'lupan_count',
       'title' => 'Lupan Count',
+      'description' => 'TODO: please describe this field!',
+      'type' => 'int',
+      'handlers' => array (
+        'filter' => array (
+          'name' => 'views_handler_filter_numeric',
+        ),
+        'field' => array (
+          'name' => 'views_handler_field_numeric',
+        ),
+        'sort' => array (
+          'name' => 'views_handler_sort',
+        ),
+        'argument' => array (
+          'name' => 'views_handler_argument_numeric',
+        ),
+      ),
+      'joins' => array (
+      ),
+    ),
+    'lupal_count' => array (
+      'name' => 'lupal_count',
+      'title' => 'Lupal Count',
+      'description' => 'TODO: please describe this field!',
+      'type' => 'int',
+      'handlers' => array (
+        'filter' => array (
+          'name' => 'views_handler_filter_numeric',
+        ),
+        'field' => array (
+          'name' => 'views_handler_field_numeric',
+        ),
+        'sort' => array (
+          'name' => 'views_handler_sort',
+        ),
+        'argument' => array (
+          'name' => 'views_handler_argument_numeric',
+        ),
+      ),
+      'joins' => array (
+      ),
+    ),
+    'pissa_count' => array (
+      'name' => 'pissa_count',
+      'title' => 'Pissa Count',
       'description' => 'TODO: please describe this field!',
       'type' => 'int',
       'handlers' => array (

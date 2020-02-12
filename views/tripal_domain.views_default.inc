@@ -80,6 +80,8 @@ $handler->display->display_options['style_options']['columns'] = array(
   'araip_count' => 'araip_count',
   'arahy_count' => 'arahy_count',
   'lupan_count' => 'lupan_count',
+  'lupal_count' => 'lupal_count',
+  'pissa_count' => 'pissa_count',
   'vigun_count' => 'vigun_count',
   'vigra_count' => 'vigra_count',
   'tree_count'  => 'tree_count',
@@ -214,6 +216,20 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'lupan_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'lupal_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'pissa_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -400,6 +416,22 @@ $handler->display->display_options['fields']['lupan_count']['alter']['make_link'
 $handler->display->display_options['fields']['lupan_count']['alter']['path'] = 'search/gene?abbreviation=lupan&domains=[feature_name]';
 $handler->display->display_options['fields']['lupan_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['lupan_count']['separator'] = '';
+/* Field: domain: Lupal Count */
+$handler->display->display_options['fields']['lupal_count']['id'] = 'lupal_count';
+$handler->display->display_options['fields']['lupal_count']['table'] = 'domain';
+$handler->display->display_options['fields']['lupal_count']['field'] = 'lupal_count';
+$handler->display->display_options['fields']['lupal_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['lupal_count']['alter']['path'] = 'search/gene?abbreviation=lupal&domains=[feature_name]';
+$handler->display->display_options['fields']['lupal_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['lupal_count']['separator'] = '';
+/* Field: domain: Pissa Count */
+$handler->display->display_options['fields']['pissa_count']['id'] = 'pissa_count';
+$handler->display->display_options['fields']['pissa_count']['table'] = 'domain';
+$handler->display->display_options['fields']['pissa_count']['field'] = 'pissa_count';
+$handler->display->display_options['fields']['pissa_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['pissa_count']['alter']['path'] = 'search/gene?abbreviation=pissa&domains=[feature_name]';
+$handler->display->display_options['fields']['pissa_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['pissa_count']['separator'] = '';
 /* Field: domain: Phylotree Count 
 $handler->display->display_options['fields']['tree_count']['id'] = 'tree_count';
 $handler->display->display_options['fields']['tree_count']['table'] = 'domain';
@@ -735,6 +767,38 @@ $handler->display->display_options['filters']['lupan_count']['expose']['use_oper
 $handler->display->display_options['filters']['lupan_count']['expose']['operator'] = 'lupan_count_op';
 $handler->display->display_options['filters']['lupan_count']['expose']['identifier'] = 'lupan_count';
 $handler->display->display_options['filters']['lupan_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: Lupal Count */
+$handler->display->display_options['filters']['lupal_count']['id'] = 'lupal_count';
+$handler->display->display_options['filters']['lupal_count']['table'] = 'domain';
+$handler->display->display_options['filters']['lupal_count']['field'] = 'lupal_count';
+$handler->display->display_options['filters']['lupal_count']['group'] = 1;
+$handler->display->display_options['filters']['lupal_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['lupal_count']['expose']['operator_id'] = 'lupal_count_op';
+$handler->display->display_options['filters']['lupal_count']['expose']['label'] = 'Lupal Count';
+$handler->display->display_options['filters']['lupal_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['lupal_count']['expose']['operator'] = 'lupal_count_op';
+$handler->display->display_options['filters']['lupal_count']['expose']['identifier'] = 'lupal_count';
+$handler->display->display_options['filters']['lupal_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: Pissa Count */
+$handler->display->display_options['filters']['pissa_count']['id'] = 'pissa_count';
+$handler->display->display_options['filters']['pissa_count']['table'] = 'domain';
+$handler->display->display_options['filters']['pissa_count']['field'] = 'pissa_count';
+$handler->display->display_options['filters']['pissa_count']['group'] = 1;
+$handler->display->display_options['filters']['pissa_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['pissa_count']['expose']['operator_id'] = 'pissa_count_op';
+$handler->display->display_options['filters']['pissa_count']['expose']['label'] = 'Pissa Count';
+$handler->display->display_options['filters']['pissa_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['pissa_count']['expose']['operator'] = 'pissa_count_op';
+$handler->display->display_options['filters']['pissa_count']['expose']['identifier'] = 'pissa_count';
+$handler->display->display_options['filters']['pissa_count']['expose']['remember_roles'] = array(
   2 => '2',
   1 => 0,
   4 => 0,
