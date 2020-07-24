@@ -75,6 +75,7 @@ $handler->display->display_options['style_options']['columns'] = array(
   'vigan_count' => 'vigan_count',
   'glyma_count' => 'glyma_count',
   'phavu_count' => 'phavu_count',
+  'phalu_count' => 'phalu_count',
   'cajca_count' => 'cajca_count',
   'aradu_count' => 'aradu_count',
   'araip_count' => 'araip_count',
@@ -181,6 +182,13 @@ $handler->display->display_options['style_options']['info'] = array(
     'empty_column' => 0,
   ),
   'phavu_count' => array(
+    'sortable' => 1,
+    'default_sort_order' => 'asc',
+    'align' => '',
+    'separator' => '',
+    'empty_column' => 0,
+  ),
+  'phalu_count' => array(
     'sortable' => 1,
     'default_sort_order' => 'asc',
     'align' => '',
@@ -376,6 +384,14 @@ $handler->display->display_options['fields']['phavu_count']['alter']['make_link'
 $handler->display->display_options['fields']['phavu_count']['alter']['path'] = 'search/gene?abbreviation=phavu&domains=[feature_name]';
 $handler->display->display_options['fields']['phavu_count']['alter']['absolute'] = TRUE;
 $handler->display->display_options['fields']['phavu_count']['separator'] = '';
+/* Field: domain: Phalu Count */
+$handler->display->display_options['fields']['phalu_count']['id'] = 'phalu_count';
+$handler->display->display_options['fields']['phalu_count']['table'] = 'domain';
+$handler->display->display_options['fields']['phalu_count']['field'] = 'phalu_count';
+$handler->display->display_options['fields']['phalu_count']['alter']['make_link'] = TRUE;
+$handler->display->display_options['fields']['phalu_count']['alter']['path'] = 'search/gene?abbreviation=phalu&domains=[feature_name]';
+$handler->display->display_options['fields']['phalu_count']['alter']['absolute'] = TRUE;
+$handler->display->display_options['fields']['phalu_count']['separator'] = '';
 /* Field: domain: Cajca Count */
 $handler->display->display_options['fields']['cajca_count']['id'] = 'cajca_count';
 $handler->display->display_options['fields']['cajca_count']['table'] = 'domain';
@@ -671,6 +687,22 @@ $handler->display->display_options['filters']['phavu_count']['expose']['use_oper
 $handler->display->display_options['filters']['phavu_count']['expose']['operator'] = 'phavu_count_op';
 $handler->display->display_options['filters']['phavu_count']['expose']['identifier'] = 'phavu_count';
 $handler->display->display_options['filters']['phavu_count']['expose']['remember_roles'] = array(
+  2 => '2',
+  1 => 0,
+  4 => 0,
+);
+/* Filter criterion: domain: Phalu Count */
+$handler->display->display_options['filters']['phalu_count']['id'] = 'phalu_count';
+$handler->display->display_options['filters']['phalu_count']['table'] = 'domain';
+$handler->display->display_options['filters']['phalu_count']['field'] = 'phalu_count';
+$handler->display->display_options['filters']['phalu_count']['group'] = 1;
+$handler->display->display_options['filters']['phalu_count']['exposed'] = TRUE;
+$handler->display->display_options['filters']['phalu_count']['expose']['operator_id'] = 'phalu_count_op';
+$handler->display->display_options['filters']['phalu_count']['expose']['label'] = 'Phalu Count';
+$handler->display->display_options['filters']['phalu_count']['expose']['use_operator'] = TRUE;
+$handler->display->display_options['filters']['phalu_count']['expose']['operator'] = 'phalu_count_op';
+$handler->display->display_options['filters']['phalu_count']['expose']['identifier'] = 'phalu_count';
+$handler->display->display_options['filters']['phalu_count']['expose']['remember_roles'] = array(
   2 => '2',
   1 => 0,
   4 => 0,
